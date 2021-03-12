@@ -1,11 +1,11 @@
 # TrendingTen 🏗
 10 Cards | Profile | Card Swipe 
 --- | --- | --- 
-![](https://github.com/tagrohan/TrendingTen/blob/master/images/Picture1.jpg) | ![](https://github.com/tagrohan/TrendingTen/blob/master/images/Picture2.jpg) |![](https://github.com/tagrohan/TrendingTen/blob/master/images/Picture3.jpg) 
+![](https://github.com/tagrohan/TrendingTen/blob/master/images/Screenshot_2.png) | ![](https://github.com/tagrohan/TrendingTen/blob/master/images/Screenshot_1.png) |![](https://github.com/tagrohan/TrendingTen/blob/master/images/Screenshot_3.png) 
 
 <br/>
 # TrendingTen 📊
-A Image-based content sharing app in top 10 format 📱 It's final year project where the trending content in every category is shorted in top 10 format 🏗. *Made with love ❤️ by [Rohan Singh](https://github.com/tagrohan)*
+A Image-based content sharing app in top 10 format 📱 It's final year project where the trending content in every category is shorted in top 10 format 🏗. *Made with love ❤️ by [Rohan Singh](https://github.com/tagrohan)
 
 <br />
 
