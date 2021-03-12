@@ -1,7 +1,7 @@
 # TrendingTen 🏗
 10 Cards | Profile | Card Swipe 
 --- | --- | --- 
-![](https://github.com/tagrohan/TrendingTen/blob/master/images/Picture1.jpg) | ![](https://github.com/tagrohan/TrendingTen/blob/master/images/Picture2.jpg) |![](https://github.com/tagrohan/TrendingTen/blob/master/images/Picture3.jpg) 
+![](https://github.com/tagrohan/TrendingTen/blob/master/images/Screenshot_2.png) | ![](https://github.com/tagrohan/TrendingTen/blob/master/images/Screenshot_1.png) |![](https://github.com/tagrohan/TrendingTen/blob/master/images/Screenshot_3.png) 
 
 <br/>
 # TrendingTen 📊
