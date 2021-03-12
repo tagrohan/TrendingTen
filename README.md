@@ -5,7 +5,7 @@
 
 <br/>
 # TrendingTen 📊
-A Image-based content sharing app in top 10 format 📱 It's final year project where the trending content in every category is shorted in top 10 format 🏗. *Made with love ❤️ by [Rohan Singh](https://github.com/tagrohan)*
+A Image-based content sharing app in top 10 format 📱 It's final year project where the trending content in every category is shorted in top 10 format 🏗. *Made with love ❤️ by [Rohan Singh](https://github.com/tagrohan)
 
 <br />
 
