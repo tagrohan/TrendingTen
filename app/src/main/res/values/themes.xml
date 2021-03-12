@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.TrendingTen" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:editTextColor">@color/textSubtitles</item>
+        <item name="android:textColorHint">@color/colorTextHint</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
+        <item name="android:scrollbarThumbVertical">@android:color/transparent</item>
+        <!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
+        <!--        <item name="android:windowTranslucentStatus">true</item>-->
+        <!--        <item name="android:windowTranslucentNavigation">true</item>-->
+        <!-- Customize your theme here. -->
+        <!-- Customize your theme here. -->
+
+
+    </style>
+
+    <!--    for splash screen-->
+    <style name="splash" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="background">@color/white</item>
+    </style>
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/ubuntu_medium</item>
+<!--        <item name="android:textSize">@dimen/_12sdp</item>-->
+    </style>
+
+</resources>

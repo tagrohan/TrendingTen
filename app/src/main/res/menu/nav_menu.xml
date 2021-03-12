@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/premium"
+        android:icon="@drawable/ic_premium"
+        android:title="Premium" />
+    <item
+        android:id="@+id/insta"
+        android:icon="@drawable/ic_instagram"
+        android:title="Connect on Instagram" />
+    <item
+        android:id="@+id/you_tube"
+        android:icon="@drawable/ic_youtube"
+        android:title="Connect on Youtube" />
+    <item
+        android:id="@+id/twitter"
+        android:icon="@drawable/ic_twitter"
+        android:title="Connect on Twitter" />
+    <item
+        android:id="@+id/friend"
+        android:icon="@drawable/ic_share"
+        android:title="Share with friend" />
+    <item
+        android:icon="@drawable/ic_logout"
+        android:id="@+id/logout"
+        android:title="Logout" />
+
+
+</menu>

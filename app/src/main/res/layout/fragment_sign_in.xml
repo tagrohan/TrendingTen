@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/frameBackground"
+    android:layout_height="match_parent"
+    tools:context=".views.SignInFragment">
+
+    <ImageView
+        android:id="@+id/sign_in_image"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:src="@drawable/ic_sign_image"
+        app:layout_constraintBottom_toTopOf="@id/sign_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sign_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="Welcome to\nTrendingTen"
+        android:textAlignment="center"
+        android:textColor="@color/avatar"
+        android:textSize="@dimen/_40sdp"
+        app:layout_constraintBottom_toTopOf="@id/sign_in_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sign_in_image"
+
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@drawable/sign_background"
+        android:drawableLeft="@drawable/ic_google_image"
+        android:fontFamily="@font/ubuntu_medium"
+        android:padding="@dimen/_10sdp"
+        android:text="Sign in"
+        android:textAlignment="gravity"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sign_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

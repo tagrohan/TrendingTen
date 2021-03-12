@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/user_image"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_5sdp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rohan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circle" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity="center_vertical|end"
+        android:text="tagrohan"
+        android:textColor="@color/dark"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="@id/user_image"
+        app:layout_constraintEnd_toStartOf="@id/user_image"
+        app:layout_constraintTop_toTopOf="@id/user_image" />
+
+    <TextView
+        android:id="@+id/connect"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:gravity="center_vertical|start"
+        android:text="connect"
+        android:textColor="@color/barColor"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="@id/user_image"
+        app:layout_constraintEnd_toStartOf="@id/user_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/user_image" />
+
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ahmedabad"
+        app:layout_constraintBottom_toTopOf="@id/like_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_image" />
+
+    <ImageView
+        android:id="@+id/like_button"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:src="@drawable/ic_solid_like"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail" />
+
+    <ImageView
+        android:id="@+id/share"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/re_tweet"
+        app:layout_constraintStart_toEndOf="@id/like_button"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail"
+        app:tint="@color/themeOne" />
+
+    <ImageView
+        android:id="@+id/re_tweet"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:src="@drawable/ic_retweet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bookmark"
+        app:layout_constraintStart_toEndOf="@id/share"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail"
+        app:tint="@color/themeOne" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/bookmark"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/re_tweet"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail"
+        app:lottie_rawRes="@raw/bookmark" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
