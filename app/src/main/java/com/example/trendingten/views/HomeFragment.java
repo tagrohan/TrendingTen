@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
 
         HomePager pager = new HomePager();
         binding.homeRecyclerView.setAdapter(pager);
+
         pager.itemPosition = new HomePager.ItemPosition() {
             @Override
             public void itemPosition(int position) {
@@ -66,7 +67,7 @@ public class HomeFragment extends Fragment {
                 binding.swipeToRefresh.setRefreshing(false);
                 Toast.makeText(requireContext(), "refreshing", Toast.LENGTH_SHORT).show();
                 binding.swipeToRefresh.setRefreshing(false);
-            }, 1000);
+            }, 500);
         });
 
     }
