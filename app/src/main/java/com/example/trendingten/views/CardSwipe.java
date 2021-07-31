@@ -15,9 +15,10 @@ import androidx.navigation.Navigation;
 
 import com.example.trendingten.R;
 import com.example.trendingten.controllers.CardRecycler;
-import com.example.trendingten.vm.CardSwipeViewModel;
 import com.example.trendingten.databinding.FragmentCardSwipeBinding;
 import com.example.trendingten.models.CardData;
+import com.example.trendingten.service.ApiCalls;
+import com.example.trendingten.vm.CardSwipeViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
@@ -128,6 +129,8 @@ public class CardSwipe extends Fragment implements View.OnClickListener {
                 binding.stackView.swipe();
                 break;
             case R.id.like:
+                new ApiCalls().getContent();
+                // todo calling here for testing
                 animateFAB(binding.like);
                 break;
             case R.id.rewind:

@@ -3,21 +3,26 @@ package com.example.trendingten.controllers;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trendingten.databinding.RecyclerViewBinding;
+import com.example.trendingten.models.Thumbnail;
+
+import java.util.List;
 
 
 public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> {
     public ItemPosition itemPosition;
+    private List<Thumbnail> thumbnails;
 
-    public HomePager() {
-        // will add stuff later
+    public HomePager(List<Thumbnail> thumbnails) {
+        this.thumbnails = thumbnails;
     }
 
+    public HomePager() {
+    }
 
     @NonNull
     @Override

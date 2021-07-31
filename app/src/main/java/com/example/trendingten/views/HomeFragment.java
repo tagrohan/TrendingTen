@@ -11,11 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.trendingten.R;
 import com.example.trendingten.controllers.HomePager;
-import com.example.trendingten.controllers.Recycler;
 import com.example.trendingten.databinding.FragmentHomeBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -46,6 +44,7 @@ public class HomeFragment extends Fragment {
         }
 
 
+        // todo going to call api to get data and passing it to pager
         HomePager pager = new HomePager();
         binding.homeRecyclerView.setAdapter(pager);
 

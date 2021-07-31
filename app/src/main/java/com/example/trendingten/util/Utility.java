@@ -17,7 +17,7 @@ public class Utility {
         data.add(new CardData("Ola Cabs", "Founded by Bhavish Aggarwal in 2010", "10", R.drawable.ola));
         data.add(new CardData("CRED", "Founded by Kunal Shah in 2018", "9", R.drawable.cred));
         data.add(new CardData("FreshtoHome", "Founded by Shan Kadavil in 2010", "8", R.drawable.freshtohome));
-        data.add(new CardData("OYO", " Founded by Ritesh Agarwal in 2010", "7", R.drawable.oyo));
+        data.add(new CardData( "OYO", " Founded by Ritesh Agarwal in 2010", "7", R.drawable.oyo));
         data.add(new CardData("Paytm", "Founded by Vijay Shekhar Sharma in 2010", "6", R.drawable.paytm));
         data.add(new CardData("Cars24", "Founded by Vikram Chopra in 2010", "5", R.drawable.cars24));
         data.add(new CardData("Urban", "Founded by Abhiraj Bhal, Varun Khaitan, Raghav Chandra in 2010", "4", R.drawable.urban));
