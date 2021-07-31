@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 public interface Api {
 
     //read all
-    @GET("/get_card")
+    @GET("/get_content")
     Call<List<Thumbnail>> getContent();
 }

@@ -15,11 +15,17 @@ import retrofit2.Retrofit;
 
 public class ApiCalls {
 
+    public interface HomeCallBack {
+        void dataAvailable(List<Thumbnail> thumbnails);
+    }
+
+    private HomeCallBack callBack;
     private static final String TAG = "APi";
 
-//    public ApiCalls(ApiService complete) {
-//        this.complete = complete;
-//    }
+
+    public ApiCalls(HomeCallBack callBack) {
+        this.callBack = callBack;
+    }
 
     private Api getApi() {
         Retrofit retrofit = Retro.getRetrofit();
@@ -34,7 +40,9 @@ public class ApiCalls {
         call.enqueue(new Callback<List<Thumbnail>>() {
             @Override
             public void onResponse(Call<List<Thumbnail>> call, Response<List<Thumbnail>> response) {
-                Log.d(TAG, "onResponse: " + response.body());
+                if (callBack != null) {
+                    callBack.dataAvailable(response.body());
+                }
             }
 
             @Override

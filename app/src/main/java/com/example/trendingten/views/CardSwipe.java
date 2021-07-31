@@ -1,7 +1,6 @@
 package com.example.trendingten.views;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +15,10 @@ import androidx.navigation.Navigation;
 import com.example.trendingten.R;
 import com.example.trendingten.controllers.CardRecycler;
 import com.example.trendingten.databinding.FragmentCardSwipeBinding;
-import com.example.trendingten.models.CardData;
-import com.example.trendingten.service.ApiCalls;
+import com.example.trendingten.models.Card;
+import com.example.trendingten.models.Thumbnail;
 import com.example.trendingten.vm.CardSwipeViewModel;
+import com.example.trendingten.vm.HomeViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
@@ -32,12 +32,14 @@ public class CardSwipe extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "CardSwipe";
     FragmentCardSwipeBinding binding;
-    int position;
-    public List<CardData> sendingData = new ArrayList<>();
+    private int position;
+    public List<Card> sendingData = new ArrayList<>();
     CardStackLayoutManager manager;
     CardSwipeViewModel viewModel;
+    HomeViewModel homeViewModel;
     NavController controller;
     CardRecycler recycler;
+    List<Thumbnail> thumbnails;
 
     public CardSwipe() {
     }
@@ -55,8 +57,12 @@ public class CardSwipe extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(getActivity()).get(CardSwipeViewModel.class);
+//        viewModel = new ViewModelProvider(getActivity()).get(CardSwipeViewModel.class);
+        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
+        // todo testing in invoking again
+        homeViewModel.invokeHomeApi();
         observers();
+
 
         binding.forward.setOnClickListener(this);
         binding.rewind.setOnClickListener(this);
@@ -64,7 +70,7 @@ public class CardSwipe extends Fragment implements View.OnClickListener {
 
         controller = Navigation.findNavController(requireView());
 
-        viewModel.updateData(position);
+//        viewModel.updateData(position);
         recyclerManager();
         recycler = new CardRecycler(requireContext(), sendingData);
     }
@@ -72,15 +78,16 @@ public class CardSwipe extends Fragment implements View.OnClickListener {
 
     // LiveData observers
     private void observers() {
-        viewModel.getData().observe(getViewLifecycleOwner(), data -> {
-            Collections.reverse(data);
-            Log.d(TAG, "onChanged: calling view Live Data");
-            invokingRecycler(data);
+        homeViewModel.getThumbnail().observe(getViewLifecycleOwner(), thumbnails -> {
+            CardSwipe.this.thumbnails = thumbnails;
+            List<Card> cards = thumbnails.get(position).getCards();
+            Collections.reverse(cards);
+            invokingRecycler(cards);
         });
     }
 
-    private void invokingRecycler(List<CardData> sendingData) {
-        recycler.updatingRecycler(sendingData);
+    private void invokingRecycler(List<Card> data) {
+        recycler.updatingRecycler(data);
 
         binding.stackView.setLayoutManager(manager);
         binding.stackView.setAdapter(recycler);
@@ -129,8 +136,6 @@ public class CardSwipe extends Fragment implements View.OnClickListener {
                 binding.stackView.swipe();
                 break;
             case R.id.like:
-                new ApiCalls().getContent();
-                // todo calling here for testing
                 animateFAB(binding.like);
                 break;
             case R.id.rewind:

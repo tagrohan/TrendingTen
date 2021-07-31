@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trendingten.databinding.RecyclerViewBinding;
+import com.bumptech.glide.Glide;
+import com.example.trendingten.R;
+import com.example.trendingten.databinding.HomeScreenViewBinding;
 import com.example.trendingten.models.Thumbnail;
 
 import java.util.List;
@@ -16,58 +18,49 @@ import java.util.List;
 public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> {
     public ItemPosition itemPosition;
     private List<Thumbnail> thumbnails;
+    private static final String URL = "http://localhost:8080/image/";
 
     public HomePager(List<Thumbnail> thumbnails) {
         this.thumbnails = thumbnails;
     }
 
-    public HomePager() {
-    }
-
     @NonNull
     @Override
     public ViewHol onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHol(RecyclerViewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+        return new ViewHol(HomeScreenViewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHol holder, int position) {
-
-        holder.innerBin.connect.setOnClickListener(view -> {
-            holder.innerBin.connect.setText("connection");
-
-        });
-
-        holder.innerBin.bookmark.setOnClickListener(view -> {
-            holder.innerBin.bookmark.playAnimation();
-        });
-
-        holder.innerBin.likeButton.setOnClickListener(view -> {
-            animateImage(holder.innerBin.likeButton);
-        });
-        holder.innerBin.share.setOnClickListener(view -> {
-            animateImage(holder.innerBin.share);
-        });
-
-        holder.innerBin.thumbnail.setOnClickListener(view -> {
-            itemPosition.itemPosition(position);
-        });
-        holder.innerBin.connect.setOnClickListener(view -> {
-            animateImage(holder.innerBin.connect);
-            holder.innerBin.connect.setText("connected");
-        });
+        if (thumbnails != null && thumbnails.size() > 0) {
+            Thumbnail t = thumbnails.get(position);
+            Glide.with(holder.itemView.getContext())
+                    .load(URL + t.getThumbnailUri())
+                    .placeholder(R.drawable.placeholder)
+                    .into(holder.innerBin.homeThumbnail);
+            holder.innerBin.homeTitle.setText(t.getTitle());
+            holder.innerBin.homeThumbnail.setOnClickListener(view -> {
+                itemPosition.itemPosition(position);
+            });
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 20;
+        return thumbnails.size() > 0 ? thumbnails.size() : 10;
+    }
+
+    public void updateHomeRecycler(List<Thumbnail> thumbnails) {
+        this.thumbnails.clear();
+        this.thumbnails.addAll(thumbnails);
+        notifyDataSetChanged();
     }
 
 
     class ViewHol extends RecyclerView.ViewHolder {
-        RecyclerViewBinding innerBin;
+        HomeScreenViewBinding innerBin;
 
-        public ViewHol(RecyclerViewBinding innerBin) {
+        public ViewHol(HomeScreenViewBinding innerBin) {
             super(innerBin.getRoot());
             this.innerBin = innerBin;
         }
@@ -85,6 +78,4 @@ public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> {
     public interface ItemPosition {
         void itemPosition(int position);
     }
-
-
 }

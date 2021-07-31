@@ -2,25 +2,25 @@ package com.example.trendingten.controllers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.trendingten.R;
 import com.example.trendingten.databinding.TinderViewBinding;
-import com.example.trendingten.models.CardData;
+import com.example.trendingten.models.Card;
 
 import java.util.List;
 
 public class CardRecycler extends RecyclerView.Adapter<CardRecycler.ViewHol> {
 
     private Context context;
-    List<CardData> data;
+    private List<Card> data;
+    private static final String URL = "http://192.168.43.64:8080/image/";
 
-    public CardRecycler(Context context, List<CardData> data) {
+    public CardRecycler(Context context, List<Card> data) {
         this.context = context;
         this.data = data;
     }
@@ -35,35 +35,28 @@ public class CardRecycler extends RecyclerView.Adapter<CardRecycler.ViewHol> {
     @Override
     public void onBindViewHolder(@NonNull ViewHol holder, int position) {
 
+        Card content = data.get(position);
+        holder.binding.name.setText(content.getName());
+        holder.binding.content.setText(content.getContent());
+        holder.binding.number.setText(content.getNumber());
         try {
-            CardData content = data.get(position);
-
-
-            holder.binding.image.setImageResource(content.getImage());
-            holder.binding.name.setText(content.getName());
-            holder.binding.content.setText(content.getContent());
-            holder.binding.number.setText(content.getNumber());
-
+            Glide.with(context)
+                    .load(URL + content.getUri())
+                    .placeholder(R.drawable.placeholder)
+                    .into(holder.binding.image);
         } catch (Exception e) {
             holder.binding.image.setImageResource(R.drawable.ola);
         }
 
-//        callBack.tinderCallBack(position, holder.binding);
-        holder.binding.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "clicked " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    public void updatingRecycler(List<CardData> cardData) {
+
+    public void updatingRecycler(List<Card> cards) {
         this.data.clear();
-        this.data.addAll(cardData);
+        this.data.addAll(cards);
         notifyDataSetChanged();
 
     }
-
 
     @Override
     public int getItemCount() {
