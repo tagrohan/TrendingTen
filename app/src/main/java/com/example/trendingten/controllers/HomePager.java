@@ -3,6 +3,8 @@ package com.example.trendingten.controllers;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,13 +14,15 @@ import com.example.trendingten.R;
 import com.example.trendingten.databinding.HomeScreenViewBinding;
 import com.example.trendingten.models.Thumbnail;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
-public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> {
+public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> implements Filterable {
     public ItemPosition itemPosition;
     private List<Thumbnail> thumbnails;
-    private static final String URL = "http://localhost:8080/image/";
+    private static final String URL = "http://192.168.0.3:8080/image/";
 
     public HomePager(List<Thumbnail> thumbnails) {
         this.thumbnails = thumbnails;
@@ -49,6 +53,40 @@ public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> {
     public int getItemCount() {
         return thumbnails.size() > 0 ? thumbnails.size() : 10;
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Thumbnail> filteredNotes = new ArrayList<>();
+
+            if (charSequence.toString().isEmpty()) {
+                filteredNotes.addAll(thumbnails);
+            } else {
+                for (Thumbnail content : thumbnails) {
+                    if (content.getTitle().toLowerCase().contains(charSequence.toString().toLowerCase())) {
+                        filteredNotes.add(content);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredNotes;
+
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            thumbnails.clear();
+            thumbnails.addAll((Collection<? extends Thumbnail>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     public void updateHomeRecycler(List<Thumbnail> thumbnails) {
         this.thumbnails.clear();

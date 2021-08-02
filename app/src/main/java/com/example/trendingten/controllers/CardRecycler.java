@@ -3,6 +3,8 @@ package com.example.trendingten.controllers;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,13 +14,14 @@ import com.example.trendingten.R;
 import com.example.trendingten.databinding.TinderViewBinding;
 import com.example.trendingten.models.Card;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardRecycler extends RecyclerView.Adapter<CardRecycler.ViewHol> {
 
     private Context context;
     private List<Card> data;
-    private static final String URL = "http://192.168.43.64:8080/image/";
+    private static final String URL = "http://192.168.0.3:8080/image/";
 
     public CardRecycler(Context context, List<Card> data) {
         this.context = context;
@@ -62,6 +65,8 @@ public class CardRecycler extends RecyclerView.Adapter<CardRecycler.ViewHol> {
     public int getItemCount() {
         return data.size() != 0 ? data.size() : 10;
     }
+
+
 
     public class ViewHol extends RecyclerView.ViewHolder {
         TinderViewBinding binding;
