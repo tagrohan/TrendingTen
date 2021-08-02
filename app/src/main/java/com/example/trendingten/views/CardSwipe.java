@@ -60,7 +60,7 @@ public class CardSwipe extends Fragment implements View.OnClickListener {
 //        viewModel = new ViewModelProvider(getActivity()).get(CardSwipeViewModel.class);
         homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
         // todo testing in invoking again
-        homeViewModel.invokeHomeApi();
+//        homeViewModel.invokeHomeApi();
         observers();
 
 
