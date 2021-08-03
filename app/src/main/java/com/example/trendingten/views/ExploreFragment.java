@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -43,8 +44,6 @@ public class ExploreFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
-        // todo testing in invoking again
-//        homeViewModel.invokeHomeApi();
 
         HomePager pager = new HomePager(new ArrayList<>());
         binding.exploreRecyclerView.setAdapter(pager);
@@ -66,9 +65,25 @@ public class ExploreFragment extends Fragment {
                 Bundle bundle = new Bundle();
 
                 bundle.putInt("KEY", position);
-                Navigation.findNavController(view).navigate(R.id.HomeToCardSwipe
+                Navigation.findNavController(view).navigate(R.id.ExploreToCardSwipe
                         , bundle);
             }
         };
+
+        binding.searchBox.onActionViewExpanded();
+        binding.searchBox.clearFocus();
+        binding.searchBox.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                pager.getFilter().filter(newText);
+                return false;
+            }
+        });
+
     }
 }

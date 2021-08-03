@@ -22,10 +22,12 @@ import java.util.List;
 public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> implements Filterable {
     public ItemPosition itemPosition;
     private List<Thumbnail> thumbnails;
+    private List<Thumbnail> thumbnailsAll;
     private static final String URL = "http://192.168.0.3:8080/image/";
 
     public HomePager(List<Thumbnail> thumbnails) {
         this.thumbnails = thumbnails;
+        this.thumbnailsAll = new ArrayList<>(thumbnails);
     }
 
     @NonNull
@@ -51,7 +53,7 @@ public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> implement
 
     @Override
     public int getItemCount() {
-        return thumbnails.size() > 0 ? thumbnails.size() : 10;
+        return thumbnails.size();
     }
 
     @Override
@@ -63,11 +65,10 @@ public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> implement
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
             List<Thumbnail> filteredNotes = new ArrayList<>();
-
             if (charSequence.toString().isEmpty()) {
-                filteredNotes.addAll(thumbnails);
+                filteredNotes.addAll(thumbnailsAll);
             } else {
-                for (Thumbnail content : thumbnails) {
+                for (Thumbnail content : thumbnailsAll) {
                     if (content.getTitle().toLowerCase().contains(charSequence.toString().toLowerCase())) {
                         filteredNotes.add(content);
                     }
@@ -75,7 +76,6 @@ public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> implement
             }
             FilterResults filterResults = new FilterResults();
             filterResults.values = filteredNotes;
-
             return filterResults;
         }
 
@@ -91,6 +91,7 @@ public class HomePager extends RecyclerView.Adapter<HomePager.ViewHol> implement
     public void updateHomeRecycler(List<Thumbnail> thumbnails) {
         this.thumbnails.clear();
         this.thumbnails.addAll(thumbnails);
+        this.thumbnailsAll.addAll(thumbnails);
         notifyDataSetChanged();
     }
 
