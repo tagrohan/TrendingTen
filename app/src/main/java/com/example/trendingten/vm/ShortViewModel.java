@@ -33,7 +33,7 @@ public class ShortViewModel extends AndroidViewModel implements ApiCalls.ShortCa
 
     @Override
     public void dataAvailable(List<Card> cardsData, int code) {
-//        Collections.shuffle(cardsData);
+        Collections.shuffle(cardsData);
         cards.setValue(cardsData);
     }
 }

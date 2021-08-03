@@ -1,106 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/fragment_profile_scene"
     tools:context=".views.ProfileFragment">
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/profile_heading"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@color/white"-->
-    <!--        android:clipToPadding="false"-->
-    <!--        android:elevation="@dimen/_1sdp"-->
-
-    <!--        android:fontFamily="@font/ubuntu_bold"-->
-    <!--        android:paddingBottom="@dimen/_2sdp"-->
-    <!--        android:text="@string/profile"-->
-    <!--        android:textAlignment="center"-->
-    <!--        android:textColor="@color/headlineColor"-->
-    <!--        android:textSize="@dimen/_20sdp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profile_image"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_75sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:elevation="@dimen/_5sdp"
         android:scaleType="centerCrop"
         android:src="@drawable/rohan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/circle" />
 
-
     <TextView
-        android:id="@+id/profile_text"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_48sdp"
-        android:contentDescription="@null"
-        android:fontFamily="@font/ubuntu_bold"
-        android:text="This is text here where\n
-you can see the text\n which appear here"
-        android:textSize="@dimen/_16sdp"
+        android:text="Rohan Singh"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/profile_number"
+        app:layout_constraintEnd_toStartOf="@id/profile_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/profile_image" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/payment_card"
+    <TextView
+        android:id="@+id/profile_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\@tagrohan"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintBottom_toTopOf="@id/profile_id"
+        app:layout_constraintEnd_toEndOf="@id/profile_name"
+        app:layout_constraintStart_toStartOf="@id/profile_name"
+        app:layout_constraintTop_toBottomOf="@id/profile_name" />
+
+    <TextView
+        android:id="@+id/profile_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Joined March 2020"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@id/profile_image"
+        app:layout_constraintEnd_toEndOf="@id/profile_number"
+        app:layout_constraintStart_toStartOf="@id/profile_number"
+        app:layout_constraintTop_toBottomOf="@id/profile_number" />
+
+    <TextView
+        android:id="@+id/total_task"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/ubuntu_bold"
+        android:padding="@dimen/_5sdp"
+        android:text="Total 42 task completed"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/card_details"
+        app:layout_constraintEnd_toEndOf="@id/card_details"
+        app:layout_constraintStart_toStartOf="@id/card_details"
+        app:layout_constraintTop_toBottomOf="@id/profile_id" />
+
+
+    <View
+        android:id="@+id/card_details"
         android:layout_width="0dp"
         android:layout_height="@dimen/_150sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_100sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:visibility="invisible"
-        app:cardBackgroundColor="@color/colorTextHint"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/profile_detail"
+        android:elevation="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_text"
-        app:strokeColor="@color/headlineColor"
-        app:strokeWidth="@dimen/_4sdp" />
+        app:layout_constraintTop_toBottomOf="@id/total_task" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/profile_invite"
+    <TextView
+        android:id="@+id/share"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:visibility="invisible"
-        app:cardBackgroundColor="@color/colorAccent"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/payment_card" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/ubuntu_medium"
+        android:padding="@dimen/_5sdp"
+        android:text="Share with friends"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/setting"
+        app:layout_constraintEnd_toEndOf="@id/card_details"
+        app:layout_constraintStart_toStartOf="@id/card_details"
+        app:layout_constraintTop_toBottomOf="@id/card_details" />
 
+    <TextView
+        android:id="@+id/setting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/ubuntu_medium"
+        android:padding="@dimen/_5sdp"
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profile_recycler"
+        android:text="Settings"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/feedback"
+        app:layout_constraintEnd_toEndOf="@id/card_details"
+        app:layout_constraintStart_toStartOf="@id/card_details"
+        app:layout_constraintTop_toBottomOf="@id/share" />
+
+    <ImageView
+        android:id="@+id/background_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorAccent"
-        android:elevation="@dimen/_10sdp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.21" />
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/ubuntu_medium"
+
+        android:padding="@dimen/_5sdp"
+        android:text="Feedback and help"
+        android:textColor="@android:color/black"
+
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/card_details"
+        app:layout_constraintStart_toStartOf="@id/card_details"
+        app:layout_constraintTop_toBottomOf="@id/setting"
+        android:layout_marginBottom="@dimen/_30sdp"
+        />
 
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
