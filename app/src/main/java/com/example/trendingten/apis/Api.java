@@ -16,4 +16,8 @@ public interface Api {
 
     @GET("/get_cards")
     Call<List<Card>> getCards();
+    
+    // new method to take card via id need to added
+//       @GET("/get_cards")
+//     Call<List<Card>> getCards();
 }
