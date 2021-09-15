@@ -2,7 +2,7 @@ package com.example.trendingten.models;
 
 import java.util.List;
 
-
+// TODO :  need to work on it
 public class Thumbnail {
 
     private int id;
